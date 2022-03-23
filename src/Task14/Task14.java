@@ -3,7 +3,7 @@ package Task14;
 public class Task14 {
     public static void main (String[] args){
 
-        long n= 7893823445L;
+        long n= 789382344539L;
         long sum =0;
         do{
             sum+=(n%10);

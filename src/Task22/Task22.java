@@ -8,12 +8,12 @@ public class Task22 {
         for(int i=0;i<mas.length;i++){
             mas[i]=b;
             b++;
-            System.out.print(mas[i]+", ");
+            System.out.print(mas[i]+"; ");
         }
         System.out.println( );
 
         for(int i=mas.length-1;i>=0;--i){
-            System.out.print(mas[i]+", ");
+            System.out.print(mas[i]+"; ");
         }
     }
 }

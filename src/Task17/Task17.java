@@ -1,32 +1,35 @@
 package Task17;
 
+import java.util.Scanner;
+
 public class Task17 {
+
+
+    private static final String EMPTY = " ";
+    private static final char MINUS = '-';
+
     public static void main(String[] args) {
-        int i=12132132;
-        int j=1000;
-        int h =0;
-        int l=1;
-        int t=i/1000;
-        int k=i%1000;
-        int f=t/1000;
-        int o=t%1000;
-        int e=f/1000;
+        Scanner num = new Scanner(System.in);
+        System.out.println("Введите число");
 
-        int d=f%1000;
-        while ( (k) > 0) {
-            l++;
-            h=l%3;
+        Long number = num.nextLong();
+        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder stringBuilderFinish = stringBuilder.append(number);
+        int checkElement = 0;
+        for (int i = stringBuilderFinish.length(), j = 0; i > 0; i--, j++) {
+            if (checkElement % 3 == 0 && checkElement != 0 && j % 3 == 0 || j == 3) {
+                if (stringBuilder.charAt(i - 1) == MINUS) {
+                    Integer minus;
+                } else {
+                    stringBuilderFinish.insert(i, EMPTY);
+                    checkElement += 3;
+
+                }
+            }
 
         }
-        System.out.println(l+" "+h);
-        }
-
-
-
-
-
-
-
+        System.out.println(stringBuilderFinish);
 
     }
+}
 

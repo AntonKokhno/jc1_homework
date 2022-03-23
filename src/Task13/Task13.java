@@ -11,6 +11,6 @@ public class Task13 {
             result = result.multiply(x);
             i++;
         } while (i <= 25);
-        System.out.println(result);
+        System.out.println("Произведение чисел от 1 до 25 = "+result);
     }
 }

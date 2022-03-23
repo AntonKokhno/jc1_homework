@@ -18,7 +18,7 @@ public class Task19 {
 
         for (int i=0 ; i<mass.length; i++)
             if (i%2==0 )
-                System.out.println(mass[i]);
+                System.out.println("Элементы на четных позицях = "+mass[i]);
 
 
 

@@ -26,7 +26,7 @@ public class Task20 {
             }
 
         }
-        System.out.println("Максимальный элемент массива = "+massMax+ "\n"+"Индекс массива ["+index+"]");
+        System.out.println("Максимальный элемент массива = "+massMax+ "\n"+"Индекс массива, ["+index+"]");
 
 
     }

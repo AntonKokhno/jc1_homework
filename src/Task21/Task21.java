@@ -2,68 +2,94 @@ package Task21;
 
 public class Task21 {
     public static void main(String[] args) {
-        int[] array = {9, -1, 10, 10, 654, 698, 1000, 1000, 3, -5};
-        int MaxArray = array[0];
-        int MinArray = array[0];
-        int IndexMax = 0;
-        int IndexMin = 0;
-        int IndexMax2=0;
-        int IndexMin2=0;
-        int Min2=0;
-        int Max2=0;
+        int[] array = {11, 27, 3, 4, 5, 1, 1,27, 1, 1, 1};
+        int maxNumber = -999999999;
+        int minNumber = 999999999;
+        int[] maxIndexArray = new int[array.length];
+        int[] minIndexArray = new int[array.length];
+
+        int maxCurrentIndexMax = -1;
+        int minCurrentIndexMax = array.length;
+        int maxCurrentIndexMin = -1;
+        int minCurrentIndexMin = array.length;
+
         int sum = 0;
-        int[]array2=new int[10];
-        int[] a;
+
         for (int i = 0; i < array.length; i++) {
-            if (MaxArray < array[i]) {
-                MaxArray = array[i];
-                IndexMax = i;
+            maxIndexArray[i] = -1;
+            minIndexArray[i] = -1;
+            if (maxNumber < array[i]) {
+                maxNumber = array[i];
             }
-            if (MinArray > array[i]) {
-                MinArray = array[i];
-                IndexMin = i;
-
+            if (minNumber > array[i]) {
+                minNumber = array[i];
             }
-//            if (array[i]==MaxArray){
-//                Max2=array[i];
-//                IndexMax2=i;
-//                System.out.println(Max2);
-//            }
-
-
         }
-//        for (int i=IndexMax;i<array.length; i++)
-//            System.out.println(array[i]);
-        for (int i = 0; i < array.length; i++) {
-
-            if (array[i]==MaxArray){
-                Max2=array[i];
-                IndexMax2=i;
-                System.out.println("несколько максимумов"+Max2+" Индекс макс.маскимов [" + IndexMax2 + "]");
+        if (maxNumber == minNumber) {
+            System.out.println(sum);
+        } else {
+            for (int i = 0; i < array.length; i++) {
+                if (maxNumber == array[i]) {
+                    maxIndexArray[i] = i;
                 }
-            if (array[i]==MinArray){
-                MinArray=array[i];
-                IndexMin2=i;
-                System.out.println("несколько минимов"+MinArray+" Индекс макс.минимов [" + IndexMin2 + "]");
+                if (minNumber == array[i]) {
+                    minIndexArray[i] = i;
+                }
             }
 
-        }
-        System.out.println("Максимальный элемент массива = " + MaxArray + "" + " Индекс макс.массива [" + IndexMax + "]");
-        System.out.println("Минимальный элемент массива = " + MinArray + "" + " Индекс мин.массива [" + IndexMin + "]");
-        if (IndexMax2 > IndexMin2){
-            for (int j = IndexMin2 + 1; j<IndexMax2 ; j++)
-                sum += array[j];
-        }
-
-        else if (IndexMax2 < IndexMin2){
-            for (int j = IndexMax2 + 1; j<IndexMin2 ; j++)
-                sum += array[j];
-
+            for (int i = 0; i < array.length; i++) {
+                System.out.println("max: " + maxIndexArray[i]);
+                System.out.println("min: " + minIndexArray[i]);
+            }
+            for (int i = 0; i < array.length; i++) {
+                if (maxCurrentIndexMax < maxIndexArray[i] && maxIndexArray[i] != -1) {
+                    maxCurrentIndexMax = i;
+                }
+                if (minCurrentIndexMax > maxIndexArray[i] && maxIndexArray[i] != -1) {
+                    minCurrentIndexMax = i;
+                }
+                if (maxCurrentIndexMin < minIndexArray[i] && minIndexArray[i] != -1) {
+                    maxCurrentIndexMin = i;
+                }
+                if (minCurrentIndexMin > minIndexArray[i] && minIndexArray[i] != -1) {
+                    minCurrentIndexMin = i;
+                }
             }
 
-        System.out.println("сумма" + sum);
+            System.out.println("maxIndexMax: " + maxCurrentIndexMax + " minIndexMax: " + minCurrentIndexMax);
+            System.out.println("maxIndexMin: " + maxCurrentIndexMin + " minIndexMin: " + minCurrentIndexMin);
+
+            int defference = Math.abs(maxCurrentIndexMax - minCurrentIndexMin);
+            int maxFinishIndex = maxCurrentIndexMax;
+            int minFinishIndex = minCurrentIndexMin;
+
+            if (defference < Math.abs(maxCurrentIndexMax - maxCurrentIndexMin)) {
+                defference = Math.abs(maxCurrentIndexMax - maxCurrentIndexMin);
+                minFinishIndex = maxCurrentIndexMin;
+            } else if (defference < Math.abs(minCurrentIndexMax - minCurrentIndexMin)) {
+                defference = Math.abs(minCurrentIndexMax - minCurrentIndexMin);
+                maxFinishIndex = minCurrentIndexMax;
+            } else if (defference < Math.abs(minCurrentIndexMax - maxCurrentIndexMin)) {
+                defference = Math.abs(minCurrentIndexMax - maxCurrentIndexMin);
+                maxFinishIndex = minCurrentIndexMax;
+                minFinishIndex = maxCurrentIndexMin;
+            }
+
+            System.out.println(defference + " " + maxFinishIndex + " " + minFinishIndex);
+
+            if (maxFinishIndex > minFinishIndex) {
+                for (int i = minFinishIndex + 1; i < maxFinishIndex; i++) {
+                    sum += array[i];
+                }
+            } else {
+                for (int i = maxFinishIndex + 1; i < minFinishIndex; i++) {
+                    sum += array[i];
+                }
+            }
         }
-
-
+        System.out.println(sum);
     }
+}
+
+
 
